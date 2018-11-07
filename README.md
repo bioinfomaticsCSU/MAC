@@ -11,7 +11,7 @@ Please make sure the path of MUMmer has been added into system variable.
 
 ## Usage: 
 
-php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read length> <insert size> <output>
+php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read_length> <insert_size> <output>
 
 
 ## Option:
@@ -20,7 +20,13 @@ php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_
 
 <paired_reads1.fastq>	The left end of Paired-end/mate-pair reads file
 
-<paired_reads2.fastq>	The right end of Paired-end/mate-pair reads file<read length>	The average length of paired reads<insert size>	The insert size of paired reads<output>	The path to store the result files
+<paired_reads2.fastq>	The right end of Paired-end/mate-pair reads file
+
+<read_length>	The average length of paired reads
+
+<insert_size>	The insert size of paired reads
+
+<output>	The path to store the result files
 
 -h      Show help message 
 
