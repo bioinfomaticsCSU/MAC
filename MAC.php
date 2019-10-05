@@ -605,7 +605,7 @@ function trimSeq($seqFile1,$seqFile2){
 ini_set('memory_limit', -1);
 $totalTimeStart = getMicrotime();
 $opt = getopt("e:h", array('eva'));
-$meg = 'Usage: php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read length> <insert size> ... <output>';
+$meg = 'Usage: php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read length> <insert size> ... <output>';
 $meg_h = 'Using option \'-h\' for help';
 
 if(isset($opt['h'])){
@@ -890,7 +890,7 @@ foreach($contigSet as $k => $set){
 $contigSet = $contigs;
 
 $stepTime = array();
-$AMC_StartTime = getMicrotime();
+$MAC_StartTime = getMicrotime();
 //======================================//
 $stepTime[0] = getMicrotime();
 foreach($contigSet as $k => $set){
@@ -960,7 +960,7 @@ foreach($telomere[1] as $i => $x){
 
 $contigSet[1] = array_values($contigSet[1]);
 $stepTime[2] = round(getMicrotime() - $stepTime[2], 3);
-$AMC_RunTime = round(getMicrotime() - $AMC_StartTime, 3);
+$MAC_RunTime = round(getMicrotime() - $MAC_StartTime, 3);
 
 //======================================//
 $stepTime[3] = getMicrotime();
@@ -1049,11 +1049,11 @@ $totalTime = round((getMicrotime() - $totalTimeStart), 3);
 if($getRunTime == 1){
 	$runtimeContext = "Runtime info:\n";
 	$runtimeContext .= "MUMmer: $mummerRunTime seconds\n";
-	$runtimeContext .= "Main algorithm: $AMC_RunTime seconds\n";
+	$runtimeContext .= "Main algorithm: $MAC_RunTime seconds\n";
 	$runtimeContext .= "Generate the fasta file: $genSeqTime seconds\n";
 	$runtimeContext .= "Total Time: $totalTime seconds\n";
 	p($runtimeContext);
-	file_put_contents("$outPath/AMC_$mum.runTime", $runtimeContext);
+	file_put_contents("$outPath/MAC_$mum.runTime", $runtimeContext);
 }
 
 print("Merging finished!\n");

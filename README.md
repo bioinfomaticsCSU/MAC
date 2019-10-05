@@ -1,5 +1,5 @@
-# AMC
-A novel scaffolding algorithm based on adjacency algebraic model and classification
+# MAC
+Merging assemblies by using adjacency algebraic model and classification
 
 ## Pre-installed:
 
@@ -11,7 +11,7 @@ Please make sure the path of MUMmer has been added into system variable.
 
 ## Usage: 
 
-php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read_length> <insert_size> <output_path>
+php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read_length> <insert_size> <output_path>
 
 
 ## Option:
@@ -34,8 +34,8 @@ php AMC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_
 
 ## Demo:
 
-Here we provide a demo for testing the performance of AMC, users can run the commandline:
+Here we provide a demo for testing the performance of MAC, users can run the commandline:
 
 ```
-php AMC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name
+php MAC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name
 ```
