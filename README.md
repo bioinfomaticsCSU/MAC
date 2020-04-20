@@ -32,7 +32,7 @@ php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_
 
 -e      Use evaluation
 
-The output merged assembly file will be named "MixOut.fasta", which saved under your output path.
+**The output merged assembly file will be named "MixOut.fasta", which saved under your output path.**
 
 ## Demo:
 
