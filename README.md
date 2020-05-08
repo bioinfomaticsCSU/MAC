@@ -47,7 +47,7 @@ Here we provide a demo for testing the performance of MAC, users can run the com
 php MAC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name
 ```
 
-Since short contigs are removed by default, if you want to retain as many contigs as possible, try the commandline:
+Since short contigs are removed by default, if you want to retain as many contigs as possible, add "-r" in the commandline:
 
 ```
 php MAC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name -r
