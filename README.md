@@ -11,7 +11,7 @@ Please make sure the path of MUMmer has been added into system variable.
 
 ## Usage: 
 
-php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read_length> <insert_size> <output_path>
+php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read_length> <insert_size> <output_path> <other_options>
 
 
 ## Option:
@@ -32,10 +32,12 @@ php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_
 
 -e      Use evaluation
 
+-r 		Retain all the short contigs 
+
 ## Notification:
 - The output merged assembly file will be named "MixOut.fasta", which saved under your output path.
 - MAC dosen't develop in parallel running, if you have too many contig files or the files are larger than 200M, we recommend running two contig files each time, then merge these result files.
-
+- The old version of MAC retained all the short contigs in result file, which would cause high redundancy. In the updated version of MAC, the short contigs are removed by default. If you want to retain these contigs, please set "-r" option.
 
 ## Demo:
 
@@ -43,4 +45,10 @@ Here we provide a demo for testing the performance of MAC, users can run the com
 
 ```
 php MAC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name
+```
+
+Since short contigs are removed by default, if you want to retain as many contigs as possible, try the commandline:
+
+```
+php MAC.php soap_ctg.fa abyss_ctg.fa velvet_ctg.fa paired-reads_1.fastq paired-reads_2.fastq 250 600 /path_of_output/out_name -r
 ```

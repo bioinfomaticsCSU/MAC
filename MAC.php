@@ -608,6 +608,8 @@ $opt = getopt("e:h", array('eva'));
 $meg = 'Usage: php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_reads2.fastq> <read length> <insert size> ... <output>';
 $meg_h = 'Using option \'-h\' for help';
 
+$options = getopt($shortopts);
+
 if(isset($opt['h'])){
 	print <<<END
 Option:
@@ -623,9 +625,11 @@ Option:
 
 	<output>   The path to store the result files
 
-	-h         Show help message 
+	-h      Show help message 
 
 	-e 		Use evaluation
+
+	-r 		Retain all the short contigs
 
 END;
 	exit();
@@ -639,16 +643,11 @@ for ($j=0; $j<$argc; $j++){
 if($contig_num<2){
 	pErr("At least two contig files are needed!");
 }
+
+
 if($argv[$argc-1]=="-e"){
 	print("Start evaluation!\n");
-	if(($argc-$contig_num-3)%3==0){
-		$pair_num=($argc-$contig_num-3)/3;
-	}
-	else{
-		pErr("The Paired-end/mate-pair reads file should be input in pairs and the read length is aldo needed!");
-	}
 
-print("Input $contig_num contig files, $pair_num pair files, and start processing\n");
 print("====================================================\n");
 $CWD = getcwd();
 $outPath = $argv[$argc-2] ? $argv[$argc-2] : $CWD.'/Mix_out';
@@ -685,6 +684,16 @@ for($f=0;$f<$contig_num;$f++){
 }
 
 }
+
+elseif($argv[$argc-1]=="-r"){
+	print("Retain the short contigs!\n");
+	$outPath = $argv[$argc-2] ? $argv[$argc-2] : $CWD.'/Mix_out';
+	$length=$argv[$contig_num+$m*3+3];
+	$pair1=$argv[$contig_num+1];
+	$pair2=$argv[$contig_num+2];
+	$inserSize=$argv[$argc-3];
+}
+
 else{
 	print("no evaluation\n");
 	$outPath = $argv[$argc-1] ? $argv[$argc-1] : $CWD.'/Mix_out';
@@ -1077,19 +1086,27 @@ if(is_file("$outputFile_target.fasta")){
 	system("show-coords -l -d $outPath/Mix2.filter > $outPath/Mix2.coords");
 	
 	$temp_target=filterContig("$outPath/Mix2.coords","$argv[$sort]");
-	$mergResult=Mergecontig("$assembled_fasta",$temp_target);
+	if($argv[$argc-1]=="-r"){
+		$mergResult=Mergecontig("$assembled_fasta",$temp_target);
+	}
+	else{
+		$mergResult=file($assembled_fasta, FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES);
+	}
 
 	if(arrTofile("$outPath/MixOut.fasta",$mergResult)){
 		print("====================================================\n");
-		print("Mix running finished!\n");
+		print("MAC running finished!\n");
+		unlink("$outPath/Mix2.coords");
+		unlink("$outPath/Mix2.filter");
+		unlink("$assembled_fasta");
 	}
 	else{
-		pErr("Mix running error!\n");
+		pErr("MAC running error!\n");
 	}
 	
 }
 else{
-	pErr("Mix running error!\n");
+	pErr("MAC running error!\n");
 }
 
 
