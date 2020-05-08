@@ -32,7 +32,7 @@ php MAC.php <contig_1.fasta> <contig_2.fasta> ... <paired_reads1.fastq> <paired_
 
 -e      Use evaluation
 
-## Notification
+## Notification:
 - The output merged assembly file will be named "MixOut.fasta", which saved under your output path.
 - MAC dosen't develop in parallel running, if you have too many contig files or the files are larger than 200M, we recommend running two contig files each time, then merge these result files.
 
