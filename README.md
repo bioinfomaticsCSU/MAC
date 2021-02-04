@@ -24,3 +24,5 @@ Please make sure the path of MUMmer has been added into system variable.
 - The input files need to be placed in the ./input folder.
 
 - The output file will be output to the ./output folder.
+
+- Because of some implementation issues, the MAs may be a little more than the original approach.
