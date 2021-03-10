@@ -1,4 +1,4 @@
-# MAC
+# MAC2.0
 
 Merging assemblies by using adjacency algebraic model and classification.
 
