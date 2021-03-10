@@ -4,7 +4,7 @@ Merging assemblies by using adjacency algebraic model and classification.
 
 ## About Updating
 
-MAC2.0 uses C++ to refactor the main contents of the original MAC, fixing errors in large files.
+MAC2.0 uses C++ to refactor the main contents of the original MAC, fixing errors in dealing large files.
 
 ## Pre-installed:
 
