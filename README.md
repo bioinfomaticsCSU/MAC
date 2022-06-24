@@ -27,3 +27,5 @@ Please make sure the path of MUMmer has been added into system variable.
 - The output file will be output to the ./output folder.
 
 - Because of some implementation issues, the MAs may be a little more than the original approach.
+
+- If you have multiple contig files (over 3) to merge, please try to merge any two of them first, then merge the result with the other files iteratively.
